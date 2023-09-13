@@ -8,6 +8,11 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
+    //absolute import
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/*"]
+    },
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
   },

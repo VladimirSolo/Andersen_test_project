@@ -65,6 +65,11 @@ export default (env: BuildEnv) => {
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js"],
+      //absolute path
+      preferAbsolute: true,
+      modules: [path.resolve(__dirname, "src"), "node_modules"],
+      mainFiles: ["index"],
+      alias: {},
     },
     // optimization: {
     //   splitChunks: {
