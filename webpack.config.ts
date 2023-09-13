@@ -1,6 +1,6 @@
-import path = require("path");
-import webpack = require("webpack");
-import HtmlWebpackPlugin = require("html-webpack-plugin");
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import 'webpack-dev-server';
 
@@ -31,6 +31,7 @@ export default (env: BuildEnv) => {
       path: path.resolve(__dirname, "build"),
       clean: true,
     },
+
     module: {
       rules: [
         {
@@ -65,6 +66,11 @@ export default (env: BuildEnv) => {
     resolve: {
       extensions: [".tsx", ".ts", ".js"],
     },
+    // optimization: {
+    //   splitChunks: {
+    //     chunks: 'all',
+    //   },
+    // },
     plugins: [
       new HtmlWebpackPlugin({
         template: path.join(__dirname, "public", "index.html"),
