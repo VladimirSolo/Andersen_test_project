@@ -13,7 +13,7 @@
       padding: 0 0 0 10px;
       font-size: 42px;
       font-weight: 500;
-      color: #fff;
+      color: $color-primary;
       letter-spacing: 5px;
       text-transform: uppercase;
     }
@@ -23,7 +23,7 @@
     margin-left: auto;
 
     .link {
-      color: #707070;
+      color: $color-secondary;
       padding: 15px;
 
       &:not(:last-child) {
@@ -35,8 +35,8 @@
     .active {
       padding: 15px;
       border-radius: 15px;
-      background: linear-gradient(90deg, #ff5c4d, #eb469f 26.56%, #8341ef 75%, #3f68f9);
-      color: #fff;
+      background: $color-bg-gradient;
+      color: $color-primary;
     }
   }
 }

@@ -67,7 +67,12 @@ export default (env: BuildEnv) => {
               },
             },
             // Compiles Sass to CSS
-            "sass-loader",
+            {
+              loader: "sass-loader",
+              options: {
+                additionalData: "@import \"src/app/styles/global.scss\";",
+              },
+            },
           ],
         },
         {
