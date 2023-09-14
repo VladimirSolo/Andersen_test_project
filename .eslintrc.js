@@ -27,6 +27,8 @@ module.exports = {
   plugins: ["react", "@typescript-eslint", "react-hooks"],
   // ignorePatterns: [".eslintrc.js"],
   rules: {
+    "no-console": "warn",
+    curly: "error",
     "react/jsx-indent": ["error", 4],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
