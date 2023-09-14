@@ -1,8 +1,8 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from "path";
+import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import 'webpack-dev-server';
+import "webpack-dev-server";
 
 export type BuildMode = "production" | "development";
 
@@ -39,7 +39,7 @@ export default (env: BuildEnv) => {
           use: {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env"]
+              presets: ["@babel/preset-env"],
             },
           },
         },
@@ -72,13 +72,13 @@ export default (env: BuildEnv) => {
         },
         {
           test: /\.svg$/,
-          use: ['@svgr/webpack'],
+          use: ["@svgr/webpack"],
         },
         {
           test: /\.(png|jpe?g|gif|woff2|woff)$/i,
           use: [
             {
-              loader: 'file-loader',
+              loader: "file-loader",
             },
           ],
         },
@@ -86,7 +86,7 @@ export default (env: BuildEnv) => {
     },
     resolve: {
       extensions: [".tsx", ".ts", ".js"],
-      //absolute path
+      // absolute path
       preferAbsolute: true,
       modules: [path.resolve(__dirname, "src"), "node_modules"],
       mainFiles: ["index"],
@@ -103,11 +103,11 @@ export default (env: BuildEnv) => {
       }),
       new webpack.ProgressPlugin(),
       new MiniCssExtractPlugin({
-        filename: 'css/[name].[contenthash:8].css'
+        filename: "css/[name].[contenthash:8].css",
       }),
-      new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin(),
     ],
-  }
+  };
 
   return config;
 };
