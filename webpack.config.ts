@@ -31,9 +31,18 @@ export default (env: BuildEnv) => {
       path: path.resolve(__dirname, "build"),
       clean: true,
     },
-
     module: {
       rules: [
+        {
+          test: /\.(js|jsx|tsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"]
+            },
+          },
+        },
         {
           test: /\.tsx?$/,
           use: "ts-loader",
@@ -61,6 +70,18 @@ export default (env: BuildEnv) => {
             "sass-loader",
           ],
         },
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
+        {
+          test: /\.(png|jpe?g|gif|woff2|woff)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ],
     },
     resolve: {
@@ -83,7 +104,8 @@ export default (env: BuildEnv) => {
       new webpack.ProgressPlugin(),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:8].css'
-      })
+      }),
+      new webpack.HotModuleReplacementPlugin()
     ],
   }
 

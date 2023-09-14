@@ -20,5 +20,9 @@
     "compilerOptions": {
       "module": "CommonJS" 
     }
-  }
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+  ],
 }
