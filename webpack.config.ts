@@ -2,6 +2,7 @@ import path from "path";
 import webpack from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import "webpack-dev-server";
 
 export type BuildMode = "production" | "development";
@@ -28,6 +29,7 @@ export default (env: BuildEnv) => {
     entry: path.resolve(__dirname, "src", "index.tsx"),
     output: {
       filename: "[name].[contenthash].js",
+      chunkFilename: "[name].[contenthash].js",
       path: path.resolve(__dirname, "build"),
       clean: true,
     },
@@ -111,6 +113,9 @@ export default (env: BuildEnv) => {
         filename: "css/[name].[contenthash:8].css",
       }),
       new webpack.HotModuleReplacementPlugin(),
+      new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+      }),
     ],
   };
 
