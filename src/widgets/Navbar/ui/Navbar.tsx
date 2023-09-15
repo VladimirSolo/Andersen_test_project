@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "shared/assets/icons/logo.svg";
 import s from "./Navbar.module.scss";
 
-export const Navbar = () => (
+const Navbar = () => (
     <div className={s.navbar}>
         <Link to="./" className={s.logo}>
             <Logo />
@@ -17,3 +17,5 @@ export const Navbar = () => (
         </div>
     </div>
 );
+
+export default Navbar;

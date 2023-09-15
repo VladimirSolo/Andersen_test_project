@@ -1,0 +1,21 @@
+.error {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: 5px;
+
+  .btn {
+    margin-top: 20px;
+    color: $color-secondary;
+    background-color: $color-bg-main;
+    font-size: 24px;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
