@@ -3,7 +3,7 @@ import Logo from "shared/assets/icons/logo.svg";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => (
-    <div className={s.navbar}>
+    <div data-testid="navbar" className={s.navbar}>
         <Link to="./" className={s.logo}>
             <Logo />
             <span className={s.text}>ovies</span>

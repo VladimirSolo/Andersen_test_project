@@ -1,15 +1,20 @@
+import { Button } from "shared/ui";
 import s from "./PageError.module.scss";
 
 const PageError = () => {
   const reloadPage = () => {
-    // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    window.location.reload();
   };
 
   return (
-      <div className={s.error}>
+      <div data-testid="page-error" className={s.error}>
           <p>Something went wrong</p>
-          <button className={s.btn} type="button" onClick={reloadPage}>Refresh page</button>
+          <Button
+            className={s.btn}
+            type="button"
+            onClick={reloadPage}
+            text="Refresh page"
+          />
       </div>
   );
 };
