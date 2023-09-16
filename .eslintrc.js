@@ -10,6 +10,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb/hooks",
+    "plugin:storybook/recommended"
   ],
   // overrides: [
   //   {
