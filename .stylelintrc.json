@@ -1,0 +1,7 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "block-no-empty": true,
+    "selector-pseudo-element-colon-notation":"single"
+  }
+}
