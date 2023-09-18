@@ -23,7 +23,7 @@ const initialState: User = {
   },
 };
 
-const userSlice = createSlice({
+const authSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -62,6 +62,8 @@ const userSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.success = "succeeded";
+        state.user.refreshToken = null;
+        state.user.uid = null;
       })
       .addCase(logout.rejected, (state) => {
         state.success = "failed";
@@ -69,4 +71,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice;
+export default authSlice;
