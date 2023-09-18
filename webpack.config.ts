@@ -118,8 +118,8 @@ export default (env: BuildEnv) => {
       new MiniCssExtractPlugin({
         filename: "css/[name].[contenthash:8].css",
       }),
-      new webpack.HotModuleReplacementPlugin(),
-      new BundleAnalyzerPlugin({
+      isDevBuild && new webpack.HotModuleReplacementPlugin(),
+      isDevBuild && new BundleAnalyzerPlugin({
         openAnalyzer: false,
       }),
     ],
