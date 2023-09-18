@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router";
 import { useTypedDispatch } from "app/providers/store/config/hooks";
 import { login } from "features/Auth/model";
+import { useState } from "react";
 import Form from "../Form/Form";
+import { GoogleAuth } from "../GoogleAuth/GoogleAuth";
+import s from "./Login.module.scss";
 
 interface Data {
   email: string;
@@ -11,6 +14,7 @@ interface Data {
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useTypedDispatch();
+  const [erorr, setError] = useState("");
 
   const onSubmit = async (data: Data) => {
     try {
@@ -19,14 +23,18 @@ export const Login = () => {
         navigate("/");
       }
     } catch (err) {
-      console.log(err);
+      setError(err);
     }
   };
 
   return (
-      <Form
-        onSubmit={onSubmit}
-        text="Log in"
-      />
+      <div className={s.login}>
+          {erorr && <span className={s.err}>{erorr}</span>}
+          <Form
+            onSubmit={onSubmit}
+            text="Log in"
+          />
+          <GoogleAuth text="Log in" />
+      </div>
   );
 };
