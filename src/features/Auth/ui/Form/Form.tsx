@@ -18,9 +18,14 @@ export interface Props {
 const Form = (props: Props) => {
   const { text, onSubmit } = props;
 
-  const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordShown, setPasswordShown] = useState("password");
+
   const togglePasswordVisiblity = () => {
-    setPasswordShown(!passwordShown);
+    if (passwordShown === "password") {
+      setPasswordShown("text");
+    } else {
+      setPasswordShown("password");
+    }
   };
 
   const emailInput = useAutoFocus();
@@ -73,7 +78,7 @@ const Form = (props: Props) => {
                         message: "min length is 5",
                       },
                     })}
-                    type={passwordShown ? "text" : "password"}
+                    type={passwordShown}
                     placeholder="password"
                   />
                   <button onClick={togglePasswordVisiblity} type="button">
