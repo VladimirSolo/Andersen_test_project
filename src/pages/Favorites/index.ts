@@ -1,0 +1,3 @@
+import { FavoritesLazy } from "./ui/FavoritesLazy";
+
+export { FavoritesLazy as Favorites };
