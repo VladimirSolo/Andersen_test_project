@@ -10,7 +10,6 @@ type Status = "idle" | "pending" | "succeeded" | "failed";
 export interface User {
   user: {
     uid: string;
-    refreshToken: string;
   }
   success: Status,
 }
@@ -19,7 +18,6 @@ const initialState: User = {
   success: "idle",
   user: {
     uid: null,
-    refreshToken: null,
   },
 };
 
@@ -27,13 +25,8 @@ const authSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // TODO!! logic for localstorage
     setUser(state, action) {
       state.user = action.payload;
-    },
-    deleteUser(state) {
-      state.user.refreshToken = null;
-      state.user.uid = null;
     },
   },
   extraReducers: (builder) => {
@@ -42,7 +35,7 @@ const authSlice = createSlice({
     });
     builder.addCase(login.fulfilled, (state, action) => {
       state.success = "succeeded";
-      state.user = action.payload;
+      state.user.uid = action.payload.uid;
     });
     builder.addCase(login.rejected, (state) => {
       state.success = "failed";
@@ -52,7 +45,7 @@ const authSlice = createSlice({
       })
       .addCase(signup.fulfilled, (state, action) => {
         state.success = "succeeded";
-        state.user = action.payload;
+        state.user.uid = action.payload.uid;
       })
       .addCase(signup.rejected, (state) => {
         state.success = "failed";
@@ -62,7 +55,6 @@ const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.success = "succeeded";
-        state.user.refreshToken = null;
         state.user.uid = null;
       })
       .addCase(logout.rejected, (state) => {

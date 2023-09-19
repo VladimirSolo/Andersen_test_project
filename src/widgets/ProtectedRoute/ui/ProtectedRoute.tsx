@@ -1,6 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../../firebase";
+import { useTypedSelector } from "app/providers/store/config/hooks";
 
 interface Props {
   isAuthenticated: boolean;
@@ -8,13 +7,13 @@ interface Props {
 
 export const ProtectedRoute = (props: Props) => {
   const { isAuthenticated } = props;
-  const [user] = useAuthState(auth);
+  const { uid } = useTypedSelector((state) => state.auth.user);
 
-  if (isAuthenticated && !user) {
+  if (isAuthenticated && !uid) {
     return <Navigate to="/login" />;
   }
 
-  if (!isAuthenticated && user) {
+  if (!isAuthenticated && uid) {
     return <Navigate to="/" />;
   }
 

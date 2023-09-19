@@ -3,9 +3,12 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "@firebase/auth";
 
 import { auth } from "firebase";
+
+import { authActions } from "features/Auth/model";
 
 interface Data {
   email: string;
@@ -52,6 +55,23 @@ export const logout = createAsyncThunk(
       return response;
     } catch (err) {
       return thunkAPI.rejectWithValue("Some problem with logout");
+    }
+  },
+);
+
+export const authCheck = createAsyncThunk(
+  "auth/check",
+  // eslint-disable-next-line consistent-return
+  (_, thunkAPI) => {
+    try {
+      onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const { uid } = user;
+          thunkAPI.dispatch(authActions.setUser({ uid }));
+        }
+      });
+    } catch (err) {
+      return thunkAPI.rejectWithValue("Authentication check error");
     }
   },
 );

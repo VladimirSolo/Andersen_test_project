@@ -4,7 +4,6 @@ import { authReducer } from "features/Auth/model";
 interface User {
   user: {
     uid: string;
-    refreshToken: string;
   }
 }
 

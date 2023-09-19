@@ -1,25 +1,24 @@
 import { Link, useLocation } from "react-router-dom";
-import { useTypedDispatch } from "app/providers/store/config/hooks";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useTypedDispatch, useTypedSelector } from "app/providers/store/config/hooks";
 import { logout } from "features/Auth/model";
 import Logo from "shared/assets/icons/logo.svg";
-import { auth } from "../../../firebase";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const [user] = useAuthState(auth);
+  const { uid } = useTypedSelector((state) => state.auth.user);
+
   const dispatch = useTypedDispatch();
   const location = useLocation();
 
   const hanldeLogout = async () => {
     try {
-      await dispatch(logout()).unwrap();
+      await dispatch(logout());
     } catch (err) {
       console.log(err);
     }
   };
   return (
-    user ? (
+    uid ? (
         <div data-testid="navbar" className={s.navbar}>
             <Link to="/" className={s.logo}>
                 <Logo />
