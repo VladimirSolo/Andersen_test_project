@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import Navbar  from "./Navbar";
+import Navbar from "./Navbar";
 
 // TODO!! not working
 // Error: Right side of assignment cannot be destructured
@@ -9,14 +9,14 @@ const meta = {
   component: Navbar,
   tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } satisfies Meta<typeof Navbar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const testNavbar: Story = {
+export const TestNavbar: Story = {
   args: {
 
   },

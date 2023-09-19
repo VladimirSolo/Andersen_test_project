@@ -24,7 +24,6 @@ const loaders = {
 };
 
 export default ({ config }: {config: webpack.Configuration}) => {
-
   config.resolve?.modules?.push(path.resolve(__dirname, "../../src"));
   config.resolve?.extensions?.push(".ts", ".tsx");
 
@@ -34,6 +33,6 @@ export default ({ config }: {config: webpack.Configuration}) => {
   });
 
   config.module?.rules?.push(loaders);
- 
+
   return config;
 };
