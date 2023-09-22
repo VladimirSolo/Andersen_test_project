@@ -1,0 +1,25 @@
+.wrpapper {
+  margin-left: 100px;
+  width: 350px;
+
+  .search {
+    position: relative;
+
+    .input {
+      width: 100%;
+      height: 40px;
+      padding: 5px;
+      background-color: #373737;
+      border: none;
+      border-radius: 8px;
+      color: $color-primary;
+    }
+
+    .searchbtn {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background-color: #373737;
+    }
+  }
+}
