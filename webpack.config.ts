@@ -34,6 +34,7 @@ export default (env: BuildEnv) => {
       filename: "[name].[contenthash].js",
       chunkFilename: "[name].[contenthash].js",
       path: path.resolve(__dirname, "build"),
+      publicPath: "/",
       clean: true,
     },
     module: {
