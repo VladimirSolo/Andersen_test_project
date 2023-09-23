@@ -1,6 +1,7 @@
 import { PageLoader } from "widgets/PageLoader";
 import { useGetByIdQuery } from "widgets/api/moviesApi";
 import { useParams } from "react-router";
+import { AddToFavorite } from "features/FirebaseDB/ui/AddToFavorite/AddToFavorite";
 import s from "./FilmDetails.module.scss";
 
 const FilmDetails = () => {
@@ -16,6 +17,7 @@ const FilmDetails = () => {
           <div className={s.details}>
               <div className={s.poster}>
                   <img className={s.image} src={data.Poster} alt={data.name} />
+                  <AddToFavorite />
               </div>
               <div className={s.about}>
                   <h1 className={s.name}>{data.Title}</h1>
