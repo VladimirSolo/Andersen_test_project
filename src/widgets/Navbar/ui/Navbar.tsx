@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useTypedDispatch, useTypedSelector } from "app/providers/store/config/hooks";
 import { logout } from "features/Auth/model";
 import Logo from "shared/assets/icons/logo.svg";
+import { SearchBar } from "features/Search";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
@@ -24,6 +25,7 @@ const Navbar = () => {
                 <Logo />
                 <span className={s.text}>ovies</span>
             </Link>
+            <SearchBar />
             <div className={s.links}>
                 <Link
                   to="/favorites"
@@ -52,6 +54,7 @@ const Navbar = () => {
                 <Logo />
                 <span className={s.text}>ovies</span>
             </Link>
+            <SearchBar />
             <div className={s.links}>
                 <Link
                   to="/login"

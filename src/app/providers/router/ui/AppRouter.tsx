@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Main } from "pages/Main";
+import { MainPage } from "pages/MainPage";
 import { LoginPage } from "pages/LoginPage";
 import { SignUpPage } from "pages/SignUpPage";
 import { NotFoundPage } from "pages/NotFoundPage";
@@ -8,6 +8,8 @@ import { PageLoader } from "widgets/PageLoader";
 import { ProtectedRoute } from "widgets/ProtectedRoute";
 import { Favorites } from "pages/Favorites";
 import { History } from "pages/History";
+import { FilmDetails } from "shared/ui";
+import { SearchPage } from "pages/SearchPage";
 
 export default function AppRouter() {
   return (
@@ -21,7 +23,9 @@ export default function AppRouter() {
                   <Route path="/favorites" element={<Favorites />} />
                   <Route path="/history" element={<History />} />
               </Route>
-              <Route path="/" element={<Main />} />
+              <Route path="/:id" element={<FilmDetails />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/" element={<MainPage />} />
               <Route path="*" element={<NotFoundPage />} />
           </Routes>
       </Suspense>

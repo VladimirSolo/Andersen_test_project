@@ -1,27 +1,19 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { authReducer } from "features/Auth/model";
+import { searchReducer } from "features/Search";
+import { moviesApi } from "widgets/api/moviesApi";
 
-interface User {
-  user: {
-    uid: string;
-  }
-}
-
-export interface StateStore {
-    auth: User;
-}
-
-const rootReducer = combineReducers<StateStore>({
+const rootReducer = combineReducers({
   auth: authReducer,
+  search: searchReducer,
+  [moviesApi.reducerPath]: moviesApi.reducer,
+
 });
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => (
-    getDefaultMiddleware({
-      immutableCheck: false,
-      serializableCheck: false,
-    })
+    getDefaultMiddleware().concat(moviesApi.middleware)
   ),
 });
 
