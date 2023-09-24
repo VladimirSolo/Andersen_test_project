@@ -1,3 +1,3 @@
 import { HistoryLazy } from "./ui/HistoryLazy";
 
-export { HistoryLazy as History };
+export { HistoryLazy as HistoryPage };
