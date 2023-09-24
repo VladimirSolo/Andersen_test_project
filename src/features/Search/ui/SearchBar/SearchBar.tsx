@@ -4,12 +4,14 @@ import SearchIcon from "shared/assets/icons/search.svg";
 import { useGetByParamsQuery } from "widgets/api/moviesApi";
 import { useTypedDispatch } from "app/providers/store/config/hooks";
 import { searchActions } from "features/Search";
+import { historyApi } from "features/Search/services/historyApi";
 import s from "./SearchBar.module.scss";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const dispatch = useTypedDispatch();
+  const [addHistory] = historyApi.useAddHistoryMutation();
 
   const { data } = useGetByParamsQuery(query);
 
@@ -17,7 +19,8 @@ const SearchBar = () => {
     if (query) {
       dispatch(searchActions.setResults(data.Search));
       setQuery("");
-      navigate("/search");
+      addHistory({ name: query });
+      navigate(`/search?name=${query}`);
     }
   };
 
