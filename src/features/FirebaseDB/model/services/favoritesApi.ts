@@ -8,6 +8,7 @@ interface Movie {
   imdbID: string
   Type: string
   Poster: string
+  idDB: string
 }
 
 interface Favorite {
@@ -21,10 +22,20 @@ export const favoritesApi = createApi({
   }),
   tagTypes: ["Favorites"],
   endpoints: (build) => ({
-    getFavoritesMovies: build.query<Favorite, void>({
+    getFavoritesMovies: build.query<Movie[], void>({
       query: () => ({
         url: "favorites.json",
       }),
+      transformResponse: (data: Favorite): Movie[] => {
+        let filmsFromDB: Movie[] = [];
+        if (data) {
+          filmsFromDB = Object.entries(data).map((item) => ({
+            idDB: item[0],
+            ...item[1],
+          }));
+        }
+        return filmsFromDB;
+      },
       providesTags: ["Favorites"],
     }),
     addMovie: build.mutation({
@@ -36,8 +47,8 @@ export const favoritesApi = createApi({
       invalidatesTags: ["Favorites"],
     }),
     removeMovie: build.mutation({
-      query: (key) => ({
-        url: `favorites/${key}.json`,
+      query: (id) => ({
+        url: `favorites/${id}.json`,
         method: "DELETE",
       }),
       invalidatesTags: ["Favorites"],

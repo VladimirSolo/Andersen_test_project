@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { favoritesApi } from "features/FirebaseDB/model/services/favoritesApi";
 import { useTypedSelector } from "app/providers/store/config/hooks";
 import { useNavigate, useParams } from "react-router-dom";
@@ -24,15 +24,12 @@ export function AddToFavorite() {
 
   const { data: oneFilm } = useGetByIdQuery(id);
 
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [key, setKey] = useState("");
-
   const movie: MovieInfo = {
-    Title: oneFilm?.Title,
-    Year: oneFilm?.Year,
-    imdbID: oneFilm?.imdbID,
-    Type: oneFilm?.Type,
-    Poster: oneFilm?.Poster,
+    Title: oneFilm.Title,
+    Year: oneFilm.Year,
+    imdbID: oneFilm.imdbID,
+    Type: oneFilm.Type,
+    Poster: oneFilm.Poster,
   };
 
   const addFilm = () => {
@@ -43,18 +40,13 @@ export function AddToFavorite() {
     }
   };
 
-  const removeFilm = () => {
-    removeMovieFromFavorites(key);
-  };
+  const isFavorite = favoriteFilms?.find(
+    (item) => item?.imdbID === id,
+  )?.idDB;
 
-  useEffect(() => {
-    if (favoriteFilms) {
-      const isFavoriteFilm = Object.values(favoriteFilms).some((film) => film.imdbID === id);
-      const newKey = Object.keys(favoriteFilms).find((item:string) => favoriteFilms[item].imdbID === id);
-      setIsFavorite(isFavoriteFilm);
-      setKey(newKey);
-    }
-  }, [favoriteFilms, id, isFavorite]);
+  const removeFilm = () => {
+    removeMovieFromFavorites(isFavorite);
+  };
 
   useEffect(() => {
     if (uid) {
