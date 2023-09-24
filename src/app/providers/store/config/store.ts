@@ -14,9 +14,11 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => (
-    getDefaultMiddleware().concat(moviesApi.middleware).concat(favoritesApi.middleware)
-  ),
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware(),
+    moviesApi.middleware,
+    favoritesApi.middleware,
+  ],
 });
 
 export type AppDispatch = typeof store.dispatch;
