@@ -1,14 +1,9 @@
-import { useEffect } from "react";
 import { favoritesApi } from "features/FirebaseDB/model/services/favoritesApi";
 import { Link } from "react-router-dom";
 import s from "./Favorites.module.scss";
 
 const Favorites = () => {
-  const [getFavoritesMovies, { data: favoriteFilms }] = favoritesApi.useLazyGetFavoritesMoviesQuery();
-
-  useEffect(() => {
-    getFavoritesMovies();
-  }, [getFavoritesMovies]);
+  const { data: favoriteFilms } = favoritesApi.useGetFavoritesMoviesQuery();
 
   return (
     !favoriteFilms
