@@ -1,0 +1,38 @@
+.linked {
+  margin-top: 10px;
+  width: 800px;
+  height: 60px;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between;
+  border: 2px solid $color-secondary;
+  background-color: $color-primary;
+
+
+ 
+
+  .path{
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: 500;
+    color: $color-text-detail;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $color-bg-main;
+    }
+  }
+
+  .bug {
+    margin-right: 50px;
+    width: 70px;
+    height: 35px;
+    border-radius: 7px;
+    color:$color-primary;
+    background: $color-rating;
+
+    &:hover {
+      background: $color-bg-gradient;
+    }
+  }
+}
