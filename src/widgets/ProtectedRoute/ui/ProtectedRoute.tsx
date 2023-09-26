@@ -1,5 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useTypedSelector } from "app/providers/store/config/hooks";
+import PropTypes from "prop-types";
 
 interface Props {
   isAuthenticated: boolean;
@@ -18,4 +19,8 @@ export const ProtectedRoute = (props: Props) => {
   }
 
   return <Outlet />;
+};
+
+ProtectedRoute.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
 };

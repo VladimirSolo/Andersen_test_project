@@ -1,4 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { authMiddleware } from "features/Auth";
 import { authReducer } from "features/Auth/model";
 import { favoritesApi } from "features/FirebaseDB/model/services/favoritesApi";
 import { searchReducer } from "features/Search";
@@ -21,6 +22,7 @@ export const store = configureStore({
     moviesApi.middleware,
     favoritesApi.middleware,
     historyApi.middleware,
+    authMiddleware,
   ],
 });
 

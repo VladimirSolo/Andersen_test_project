@@ -1,0 +1,23 @@
+.suggest{
+  position: absolute;
+  width: 350px;
+  margin-top: 5px;
+  font-size: 20px;
+  background-color: $color-primary;
+  overflow: hidden;
+  border-radius: 12px;
+  z-index: 99;
+
+  .linka {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: $color-bg-main;
+
+    .imag {
+      padding-right: 5px;
+      width: 80px;
+      height: 100px;
+    }
+  }
+}
