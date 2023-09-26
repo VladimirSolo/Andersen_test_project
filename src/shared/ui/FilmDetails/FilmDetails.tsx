@@ -16,7 +16,7 @@ const FilmDetails = () => {
       <div className={s.wrapper}>
           <div className={s.details}>
               <div className={s.poster}>
-                  <img className={s.image} src={data.Poster} alt={data.name} />
+                  <img className={s.image} src={data.Poster} alt={data.Poster} />
                   <AddToFavorite />
               </div>
               <div className={s.about}>
