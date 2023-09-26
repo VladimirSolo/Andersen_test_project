@@ -2,11 +2,21 @@ import { PageLoader } from "widgets/PageLoader";
 import { useGetByIdQuery } from "widgets/api/moviesApi";
 import { useParams } from "react-router";
 import { AddToFavorite } from "features/FirebaseDB/ui/AddToFavorite/AddToFavorite";
+import { useContext } from "react";
+import { FeatureTelegramContext } from "app/providers/FeatureTelegramProvider";
+import TelegramIcon from "shared/assets/icons/tg.svg";
 import s from "./FilmDetails.module.scss";
 
 const FilmDetails = () => {
   const { id } = useParams();
   const { data, isLoading } = useGetByIdQuery(id);
+
+  const { isTelegramShareEnabled } = useContext(FeatureTelegramContext);
+
+  const handleShareToTelegram = () => {
+    const telegramUrl = `https://t.me/share/url?url=${window.location.href}&text=WATHTHIS-${data.Title}`;
+    window.open(telegramUrl, "_blank");
+  };
 
   if (isLoading) {
     return <PageLoader />;
@@ -18,6 +28,18 @@ const FilmDetails = () => {
               <div className={s.poster}>
                   <img className={s.image} src={data.Poster} alt={data.Poster} />
                   <AddToFavorite />
+                  {
+                  isTelegramShareEnabled && (
+                  <button
+                    className={s.shared}
+                    onClick={handleShareToTelegram}
+                    type="button"
+                  >
+                      <p>Shared Telegram</p>
+                      <TelegramIcon className={s.tg} />
+                  </button>
+                  )
+}
               </div>
               <div className={s.about}>
                   <h1 className={s.name}>{data.Title}</h1>
