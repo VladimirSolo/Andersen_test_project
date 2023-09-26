@@ -5,6 +5,7 @@ import { favoritesApi } from "features/FirebaseDB/model/services/favoritesApi";
 import { searchReducer } from "features/Search";
 import { historyApi } from "features/Search/services/historyApi";
 import { moviesApi } from "widgets/api/moviesApi";
+import { serverApi } from "widgets/api/serverApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   [moviesApi.reducerPath]: moviesApi.reducer,
   [favoritesApi.reducerPath]: favoritesApi.reducer,
   [historyApi.reducerPath]: historyApi.reducer,
+  [serverApi.reducerPath]: serverApi.reducer,
 
 });
 
@@ -22,6 +24,7 @@ export const store = configureStore({
     moviesApi.middleware,
     favoritesApi.middleware,
     historyApi.middleware,
+    serverApi.middleware,
     authMiddleware,
   ],
 });
