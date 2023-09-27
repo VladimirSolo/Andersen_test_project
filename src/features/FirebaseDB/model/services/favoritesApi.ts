@@ -1,6 +1,5 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
-const baseUrl = "https://auth-9941a-default-rtdb.firebaseio.com/";
+import { createApi } from "@reduxjs/toolkit/dist/query/react";
+import { dynamicBaseQuery } from "widgets/api/config/baseApi";
 
 interface Movie {
   Title: string
@@ -17,9 +16,7 @@ interface Favorite {
 
 export const favoritesApi = createApi({
   reducerPath: "favoritesApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl,
-  }),
+  baseQuery: dynamicBaseQuery,
   tagTypes: ["Favorites"],
   endpoints: (build) => ({
     getFavoritesMovies: build.query<Movie[], void>({
