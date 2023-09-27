@@ -1,6 +1,6 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 
-const baseUrl = "https://auth-9941a-default-rtdb.firebaseio.com/";
+import { dynamicBaseQuery } from "widgets/api/config/baseApi";
 
 interface History {
   name: string,
@@ -12,9 +12,7 @@ interface Query {
 
 export const historyApi = createApi({
   reducerPath: "historyApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl,
-  }),
+  baseQuery: dynamicBaseQuery,
   tagTypes: ["History"],
   endpoints: (build) => ({
     getHistory: build.query<History[], void>({
