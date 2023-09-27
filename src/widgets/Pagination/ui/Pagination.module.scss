@@ -1,0 +1,19 @@
+.paginat{
+  margin: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .prev {
+    margin-right: 40px;
+  }
+
+  .prev,
+  .next {
+    border-radius: 25%;
+  }
+
+  .right {
+    width: 40px;
+  }
+}
