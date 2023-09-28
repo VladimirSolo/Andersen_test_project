@@ -6,11 +6,11 @@
 
  **Основной функционал**:
 
-> **Регистрация и авторизация:** пользователи могут создать учетную запись и авторизоваться в приложении.
-> **Поиск фильмов:** приложение предоставляет возможность быстрого поиска фильмов.
-> **Избранные фильмы:** пользователи могут добавлять фильмы в избранное, чтобы собирать свою коллекцию.
-> **История поиска:** приложение сохраняет историю поиска, чтобы иметь возможность быстро вспомнить что искали.
-> **Поделиться фильмом:** приложение может предоставлять кнопку "Share Telegram" в карточке с персонажем.
+> - **Регистрация и авторизация:** пользователи могут создать учетную запись и авторизоваться в приложении.
+> - **Поиск фильмов:** приложение предоставляет возможность быстрого поиска фильмов.
+> - **Избранные фильмы:** пользователи могут добавлять фильмы в избранное, чтобы собирать свою коллекцию.
+> - **История поиска:** приложение сохраняет историю поиска, чтобы иметь возможность быстро вспомнить что искали.
+> - **Поделиться фильмом:** приложение может предоставлять кнопку "Share Telegram" в карточке с персонажем.
 
 ## Если необходимо использовать приложение локально, то нужно сделать следующее:
 
@@ -49,7 +49,7 @@ npm run start
 7. [x] Есть хотя бы один кастомный хук: [AuthCheck](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/lib/useAuthCheck.ts), [Debounce](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/lib/useDebounce.ts).
 8. [x] Хотя бы несколько компонентов используют PropTypes: [ProtectRoute](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/ProtectedRoute/ui/ProtectedRoute.tsx), [Suggest](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/Suggest/ui/Suggest.tsx)
 9. [x] Поиск не должен триггерить много запросов к серверу: хук [Debounce](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/lib/useDebounce.ts). использован в компоненте [SearchBar](https://github.com/VladimirSolo/Movie_App/blob/main/src/features/Search/ui/SearchBar/SearchBar.tsx).
-- Есть применение lazy + Suspense: [Suspense](https://github.com/VladimirSolo/Movie_App/blob/main/src/app/providers/router/ui/AppRouter.tsx), [Lazy](https://github.com/VladimirSolo/Movie_App/blob/main/src/pages/MainPage/ui/MainLazy.tsx)
+10. [x] Есть применение lazy + Suspense: [Suspense](https://github.com/VladimirSolo/Movie_App/blob/main/src/app/providers/router/ui/AppRouter.tsx), [Lazy](https://github.com/VladimirSolo/Movie_App/blob/main/src/pages/MainPage/ui/MainLazy.tsx)
 
 ## Redux
 
