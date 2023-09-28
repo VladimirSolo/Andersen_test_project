@@ -62,8 +62,7 @@ npm run start
 ## **2 уровень (необязательный)**
 
 1. [x] Использование TypeScript: [TSConfig](https://github.com/VladimirSolo/Movie_App/blob/main/tsconfig.json).
-2. [x] Использование Firebase для учетных записей: [AuthThunk](https://github.com/VladimirSolo/Movie_App/blob/main/src/features/Auth/model/actions/authThunk.ts), для обращение к базе данных избранного и истории поиска используется база firebase: [AuthThunk](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/api/config/baseApi.ts)
-[favorites.actions](https://github.com/afect13/aston-react-project/blob/main/src/features/favorites/favorites.actions.ts), [history.actions]3https://github.com/afect13/aston-react-project/blob/main/src/features/history/history.actions.ts).
+2. [x] Использование Firebase для учетных записей: [AuthThunk](https://github.com/VladimirSolo/Movie_App/blob/main/src/features/Auth/model/actions/authThunk.ts), для обращение к базе данных избранного и истории поиска используется база firebase: [Base](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/api/config/baseApi.ts).
 3. [x]  Настроен CI: [CI](https://github.com/VladimirSolo/Movie_App/blob/main/.github/workflows/worksflows.yml)
 4. [x] Feature Flags. Реализовать фичу “Поделиться в телеграм”, закрытую под фича флагом.
   - Если флаг с этой фичей включен, то у карточки единицы информации должна появиться кнопка “Поделиться” : [ServerApi](https://github.com/VladimirSolo/Movie_App/blob/main/src/widgets/api/serverApi.ts).
