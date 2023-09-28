@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useTypedSelector } from "app/providers/store/config/hooks";
+import { getMovies } from "features/Search/model/selector/getMovies";
 import s from "./Search.module.scss";
 
 const Search = () => {
-  const movies = useTypedSelector((state) => state.search.movies);
+  const movies = useTypedSelector(getMovies);
 
   return (
     movies

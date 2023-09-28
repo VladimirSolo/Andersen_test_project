@@ -1,6 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 
 import { dynamicBaseQuery } from "widgets/api/config/baseApi";
+import { transformHistory } from "./transform/transformResponse";
 
 interface History {
   name: string,
@@ -19,16 +20,7 @@ export const historyApi = createApi({
       query: () => ({
         url: "history.json",
       }),
-      transformResponse: (data): History[] => {
-        let history: History[] = [];
-        if (data) {
-          history = Object.entries(data).map((item) => ({
-            id: item[0],
-            name: item[1].name,
-          }));
-        }
-        return history;
-      },
+      transformResponse: transformHistory,
       providesTags: ["History"],
     }),
     addHistory: build.mutation<void, Query>({

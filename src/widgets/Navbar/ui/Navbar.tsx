@@ -3,10 +3,11 @@ import { useTypedDispatch, useTypedSelector } from "app/providers/store/config/h
 import { logout } from "features/Auth/model";
 import Logo from "shared/assets/icons/logo.svg";
 import { SearchBar } from "features/Search";
+import { getUser } from "features/Auth/model/selector/getUser";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const { uid } = useTypedSelector((state) => state.auth.user);
+  const { uid } = useTypedSelector(getUser);
 
   const dispatch = useTypedDispatch();
   const location = useLocation();

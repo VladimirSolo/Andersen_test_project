@@ -5,12 +5,7 @@ import HistoryLink from "../HistoryLink/HistoryLink";
 import s from "./History.module.scss";
 
 const History = () => {
-  //   const [removeAllHistory, { isLoading: loadingRemoveAll }] = historyApi.useRemoveAllHistoryMutation();
   const { data: history, isLoading } = historyApi.useGetHistoryQuery();
-
-  //   const onRemoveAllHistory = () => {
-  //     removeAllHistory();
-  //   };
 
   if (isLoading) {
     return <PageLoader />;

@@ -42,7 +42,6 @@ export const moviesApi = createApi({
     getByParams: build.query({
       query: (params) => ({
         url: `${baseUrl}&s=${params}`,
-        // params: { limit, name },
       }),
     }),
   }),
