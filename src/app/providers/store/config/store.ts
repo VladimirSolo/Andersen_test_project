@@ -2,14 +2,12 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { authMiddleware } from "features/Auth";
 import { authReducer } from "features/Auth/model";
 import { favoritesApi } from "features/FirebaseDB/model/services/favoritesApi";
-import { searchReducer } from "features/Search";
 import { historyApi } from "features/Search/services/historyApi";
 import { moviesApi } from "widgets/api/moviesApi";
 import { serverApi } from "widgets/api/serverApi";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  search: searchReducer,
   [moviesApi.reducerPath]: moviesApi.reducer,
   [favoritesApi.reducerPath]: favoritesApi.reducer,
   [historyApi.reducerPath]: historyApi.reducer,

@@ -34,6 +34,11 @@ export const moviesApi = createApi({
         url: `${baseUrl}&s=computer&page=${page}`,
       }),
     }),
+    getSearchMovies: build.query<Movie, string>({
+      query: (search) => ({
+        url: `${baseUrl}&s=${search}`,
+      }),
+    }),
     getById: build.query({
       query: (id) => ({
         url: `${baseUrl}&i=${id}`,
@@ -47,4 +52,6 @@ export const moviesApi = createApi({
   }),
 });
 
-export const { useGetMoviesQuery, useGetByIdQuery, useGetByParamsQuery } = moviesApi;
+export const {
+  useGetMoviesQuery, useGetByIdQuery, useGetByParamsQuery, useGetSearchMoviesQuery,
+} = moviesApi;

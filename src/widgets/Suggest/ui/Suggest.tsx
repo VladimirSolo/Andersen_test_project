@@ -13,14 +13,18 @@ interface Props {
 }
 
 const Suggest = ({ movies }: Props) => (
-    <div className={s.suggest}>
-        {movies.slice(0, 5).map((film) => (
-            <Link className={s.linka} key={film.imdbID} to={`/${film.imdbID}`}>
-                <img className={s.imag} src={film.Poster} alt={film.Title} />
-                {film.Title}
-            </Link>
-        ))}
-    </div>
+  movies
+    ? (
+        <div className={s.suggest}>
+            {movies.slice(0, 5).map((film) => (
+                <Link className={s.linka} key={film.imdbID} to={`/${film.imdbID}`}>
+                    <img className={s.imag} src={film.Poster} alt={film.Title} />
+                    {film.Title}
+                </Link>
+            ))}
+        </div>
+    )
+    : <p>Movies not found</p>
 );
 
 Suggest.propTypes = {
