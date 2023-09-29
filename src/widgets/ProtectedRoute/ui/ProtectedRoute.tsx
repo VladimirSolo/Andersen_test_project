@@ -9,13 +9,13 @@ interface Props {
 
 export const ProtectedRoute = (props: Props) => {
   const { isAuthenticated } = props;
-  const { uid } = useTypedSelector(getUser);
+  const isUser = useTypedSelector(getUser);
 
-  if (isAuthenticated && !uid) {
+  if (isAuthenticated && !isUser) {
     return <Navigate to="/login" />;
   }
 
-  if (!isAuthenticated && uid) {
+  if (!isAuthenticated && isUser) {
     return <Navigate to="/" />;
   }
 

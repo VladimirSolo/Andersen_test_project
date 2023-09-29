@@ -7,7 +7,7 @@ import { getUser } from "features/Auth/model/selector/getUser";
 import s from "./Navbar.module.scss";
 
 const Navbar = () => {
-  const { uid } = useTypedSelector(getUser);
+  const isAuth = useTypedSelector(getUser);
 
   const dispatch = useTypedDispatch();
   const location = useLocation();
@@ -20,7 +20,7 @@ const Navbar = () => {
     }
   };
   return (
-    uid ? (
+    isAuth ? (
         <div data-testid="navbar" className={s.navbar}>
             <Link to="/" className={s.logo}>
                 <Logo />
