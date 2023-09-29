@@ -1,6 +1,8 @@
 import { favoritesApi } from "features/FirebaseDB/model/services/favoritesApi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetByIdQuery } from "widgets/api/moviesApi";
+import { getUser } from "features/Auth/model/selector/getUser";
+import { useTypedSelector } from "app/providers/store/config/hooks";
 import s from "./AddToFavorite.module.scss";
 
 interface MovieInfo {
@@ -13,6 +15,8 @@ interface MovieInfo {
 
 export function AddToFavorite() {
   const { id } = useParams();
+  const isAuth = useTypedSelector(getUser);
+  const navigate = useNavigate();
 
   const [addMovieToFavorites] = favoritesApi.useAddMovieMutation();
   const [removeMovieFromFavorites] = favoritesApi.useRemoveMovieMutation();
@@ -40,19 +44,31 @@ export function AddToFavorite() {
     removeMovieFromFavorites(isFavorite);
   };
 
+  const handleGoLogin = () => {
+    navigate("/login");
+  };
+
   return (
-      <div className="">
-          {!isFavorite
-            ? (
-                <button type="button" onClick={addFilm} className={`${s.add} ${s.favbtn}`}>
-                    Add to favorites
-                </button>
-            )
-            : (
-                <button type="button" onClick={removeFilm} className={`${s.delete} ${s.favbtn}`}>
-                    Delete from favorites
-                </button>
-            )}
-      </div>
+    isAuth
+      ? (
+          <div className="">
+              {!isFavorite
+                ? (
+                    <button type="button" onClick={addFilm} className={`${s.add} ${s.favbtn}`}>
+                        Add to favorites
+                    </button>
+                )
+                : (
+                    <button type="button" onClick={removeFilm} className={`${s.delete} ${s.favbtn}`}>
+                        Delete from favorites
+                    </button>
+                )}
+          </div>
+      )
+      : (
+          <button type="button" onClick={handleGoLogin} className={`${s.add} ${s.favbtn}`}>
+              Add to favorites
+          </button>
+      )
   );
 }
